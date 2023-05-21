@@ -1,0 +1,41 @@
+version: '3.1'
+
+
+networks:
+  network:
+    ipam:
+      driver: default
+      config:
+        - subnet: '10.0.0.0/16'
+
+services:
+  decode:
+    build:
+      context: ./Decode/
+      dockerfile: ./Dockerfile
+    container_name: xybSign_decode
+    restart: always
+    ports:
+      - 8000:8000
+    networks:
+      network:
+        ipv4_address: 10.0.0.3
+
+
+
+  server:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: xybSign_serve
+    restart: always
+    depends_on:
+      - decode
+    links:
+      - decode
+    networks:
+      network:
+        ipv4_address: 10.0.0.2
+
+
+

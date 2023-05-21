@@ -1,0 +1,10 @@
+
+stages:
+  - build
+
+dockerbuild:
+  stage: build
+  script:
+    - echo user ${USER}
+    - docker-compose build
+    - docker-compose up -d

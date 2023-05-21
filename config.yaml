@@ -1,0 +1,34 @@
+# province: "中国",  实习地址国家
+# country: "广东省", 实习地址省份
+# city: "深圳市", 实习地址城市
+User-list: [
+  {
+    signType: "wechar", #微信小程序登录方式配置模板
+    nickName: "用户名称",
+    openId: "WeChat openid",
+    unionId: "WeChat unionId",
+    province: "中国",
+    country: "广东省",
+    city: "深圳市"
+  },
+  {
+    signType: "password", #账号密码登录方式配置模板
+    nickName: "用户名称",
+    openId: "校友邦账号",
+    unionId: "校友邦密码",
+    province: "中国",
+    country: "广东省",
+    city: "深圳市"
+  },
+]
+
+# 触发时间 上午8点半 下午5点半 周一到周五(PS 校友邦后端经常早晚高峰炸，建议错峰)
+Timer:
+  start: true
+  spec: "30 7,17 * * 1,2,3,4,5" # 定时任务详细配置参考 https://pkg.go.dev/github.com/robfig/cron/v3
+
+#钉钉通知
+Dingtalk:
+  accessToken: "填自己的accessToken"
+  secretKey: "填自己的secretKey"
+
